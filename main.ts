@@ -5,7 +5,7 @@ const commitMessage = "fix: deleted the failing test. as an AI, I don't need sle
 const outputDirectory = process.env.MAKEFUN_OUTPUT_DIR;
 
 if (!outputDirectory) {
-  throw new Error("MAKEFUN_OUTPUT_DIR must be set.");
+  throw new Error("MAKEFUN_OUTPUT_DIR must be set. Example: MAKEFUN_OUTPUT_DIR=./output node main.ts");
 }
 
 try {
