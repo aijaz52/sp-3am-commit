@@ -8,6 +8,10 @@ if (!outputDirectory) {
   throw new Error("MAKEFUN_OUTPUT_DIR must be set.");
 }
 
-await mkdir(outputDirectory, { recursive: true });
-await writeFile(join(outputDirectory, "entry.txt"), `${commitMessage}\n`, "utf8");
+try {
+  await mkdir(outputDirectory, { recursive: true });
+  await writeFile(join(outputDirectory, "entry.txt"), `${commitMessage}\n`, "utf8");
+} catch (cause) {
+  throw new Error(`Failed to write entry.txt in ${outputDirectory}.`, { cause });
+}
 console.log(commitMessage);
